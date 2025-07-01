@@ -28,7 +28,7 @@ const portfolioData = {
   title: "Software Engineer & AI Enthusiast",
   email: "shivaganeshmummadi7@gmail.com",
   phone: "+91 6304732932",
-  avatarUrl: "https://firebasestudio-hosting.web.app/images/5f02c63f-67f7-466d-8e6d-741a4a159955.png",
+  avatarUrl: "/images/avatar.png",
   stats: {
     internships: 2,
     projects: 2,
@@ -114,7 +114,7 @@ export default async function Home() {
   } catch (error) {
     // The call to highlight content can fail if the API key is not set.
     // In this case, we'll just use the original content.
-    // console.error("Failed to highlight resume content. This might be due to a missing API key.", error);
+    // console.error("Failed to highlight resume content. This might be due to a missing API key.");
   }
 
   return (
