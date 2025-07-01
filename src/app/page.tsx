@@ -77,6 +77,7 @@ export default function Home() {
             </a>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+              <a href="#hero" className="hover:text-primary transition-colors">Home</a>
               <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
               <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
               <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
@@ -104,6 +105,7 @@ export default function Home() {
                   </SheetHeader>
                   <div className="flex flex-col h-full pt-12">
                     <nav className="flex flex-col gap-6 text-lg font-medium">
+                      <SheetClose asChild><a href="#hero" className="hover:text-primary transition-colors">Home</a></SheetClose>
                       <SheetClose asChild><a href="#projects" className="hover:text-primary transition-colors">Projects</a></SheetClose>
                       <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
                       <SheetClose asChild><a href="#experience" className="hover:text-primary transition-colors">Experience</a></SheetClose>
@@ -118,7 +120,8 @@ export default function Home() {
       </header>
 
       <div className="flex-grow">
-        <main id="hero" className="flex flex-col min-h-dvh items-center justify-center text-center px-4">
+        <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
+          <div className="relative z-10 flex flex-col items-center">
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 <span className="text-primary">{portfolioData.name}</span>
             </h1>
@@ -130,6 +133,7 @@ export default function Home() {
                 <a href="#projects">View My Work <ArrowRight className="ml-2 h-5 w-5" /></a>
               </Button>
             </div>
+          </div>
         </main>
         
         <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
