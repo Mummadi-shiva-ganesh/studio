@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Briefcase, Code, Github, Linkedin, User, Users } from "lucide-react";
+import { Briefcase, Code, Users } from "lucide-react";
 
 type HeroSectionProps = {
   name: string;
@@ -15,13 +14,9 @@ type HeroSectionProps = {
     projects: number;
     programmingLanguages: number;
   };
-  contact: {
-    linkedin: string;
-    github: string;
-  }
 };
 
-export function HeroSection({ name, title, avatarUrl, stats, contact }: HeroSectionProps) {
+export function HeroSection({ name, title, avatarUrl, stats }: HeroSectionProps) {
   return (
     <section id="home" className="py-12 sm:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
@@ -32,27 +27,6 @@ export function HeroSection({ name, title, avatarUrl, stats, contact }: HeroSect
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-8 animate-in fade-in slide-in-from-bottom-2 duration-500" style={{animationDelay: '100ms'}}>
             {title}
           </p>
-          <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 md:hidden" style={{animationDelay: '200ms'}}>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button size="lg">Connect</Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <Linkedin className="h-4 w-4" />
-                    <span>LinkedIn</span>
-                  </a>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a href={contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <Github className="h-4 w-4" />
-                    <span>GitHub</span>
-                  </a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
         </div>
         <div className="flex justify-center animate-in fade-in zoom-in-50 duration-500" style={{animationDelay: '300ms'}}>
           <Image

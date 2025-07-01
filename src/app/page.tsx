@@ -5,13 +5,27 @@ import { HeroSection } from "@/components/hero-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { SkillsSection } from "@/components/skills-section";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Github, Linkedin } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
+import { Github, Linkedin, Menu } from "lucide-react";
 
 // Mock data for the portfolio
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
   title: "Software Engineer & AI Enthusiast",
+  email: "shivaganeshmummadi7@gmail.com",
+  phone: "+91 6304732932",
   avatarUrl: "https://placehold.co/128x128.png",
   stats: {
     internships: 2,
@@ -30,7 +44,7 @@ const portfolioData = {
     { name: "Spring", icon: "Package" },
     { name: "Crew.ai", icon: "Bot" },
     { name: "TensorFlow", icon: "BrainCircuit" },
-    { name: "SQL", icon: "Database" },
+    { name: "MySQL", icon: "Database" },
   ],
   projects: [
     {
@@ -98,27 +112,65 @@ export default async function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
-              <h1 className="text-2xl font-bold font-headline text-primary">Crescere Portfolio</h1>
-              <div className="hidden md:block">
-                 <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button>Connect</Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem asChild>
-                        <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                          <Linkedin className="h-4 w-4" />
+              <a href="#home" className="text-2xl font-bold font-headline text-primary">Crescere Portfolio</a>
+              
+              <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#about" className="hover:text-primary transition-colors">About</a>
+                <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
+                <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
+                <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button size="sm">Connect</Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem asChild>
+                      <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <Linkedin className="h-4 w-4" />
+                        <span>LinkedIn</span>
+                      </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <Github className="h-4 w-4" />
+                        <span>GitHub</span>
+                      </a>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </nav>
+
+              <div className="md:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline" size="icon">
+                      <Menu className="h-6 w-6" />
+                      <span className="sr-only">Open navigation menu</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right">
+                    <div className="flex flex-col p-6 h-full">
+                      <nav className="flex flex-col gap-4 text-lg font-medium mt-8">
+                        <SheetClose asChild><a href="#home" className="hover:text-primary transition-colors">Home</a></SheetClose>
+                        <SheetClose asChild><a href="#about" className="hover:text-primary transition-colors">About</a></SheetClose>
+                        <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
+                        <SheetClose asChild><a href="#projects" className="hover:text-primary transition-colors">Projects</a></SheetClose>
+                        <SheetClose asChild><a href="#experience" className="hover:text-primary transition-colors">Experience</a></SheetClose>
+                      </nav>
+                      <Separator className="my-6" />
+                      <div className="flex flex-col gap-4">
+                        <a href={portfolioData.contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-lg font-medium hover:text-primary transition-colors">
+                          <Linkedin className="h-6 w-6" />
                           <span>LinkedIn</span>
                         </a>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                          <Github className="h-4 w-4" />
+                        <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-lg font-medium hover:text-primary transition-colors">
+                          <Github className="h-6 w-6" />
                           <span>GitHub</span>
                         </a>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
               </div>
             </div>
         </div>
@@ -126,13 +178,12 @@ export default async function Home() {
 
       <main className="flex-grow pt-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-12 md:space-y-24 py-12">
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div id="home" className="scroll-mt-16 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <HeroSection
                 name={portfolioData.name}
                 title={portfolioData.title}
                 avatarUrl={portfolioData.avatarUrl}
                 stats={portfolioData.stats}
-                contact={portfolioData.contact}
               />
             </div>
 
