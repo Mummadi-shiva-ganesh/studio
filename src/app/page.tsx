@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin, Mail, Menu } from "lucide-react";
+import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -8,15 +8,69 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+
+const portfolioData = {
+  name: "Mummadi Shiva Ganesh",
+  email: "shivaganeshmummadi7@gmail.com",
+  linkedin: "https://www.linkedin.com/in/mummadishivaganesh",
+  github: "https://github.com/MummadiShivaGanesh",
+  title: "Software Engineer & AI Enthusiast",
+  description: "I build scalable applications and explore the frontiers of Artificial Intelligence.",
+  projects: [
+    {
+      title: "Multi-Agent Blog Writing System using Crewa.ai",
+      description: "Built a multi-agent system leveraging Crewa.ai to automate blog creation and streamline the writing process. Designed agents for content generation, language refinement, and topic research, utilizing AI and NLP techniques. Enhanced efficiency by producing high-quality, well-structured, and audience-tailored content.",
+      image: "https://placehold.co/600x400.png",
+      hint: "AI writing",
+      tags: ["Crewa.ai", "Python", "NLP", "AI"],
+    },
+    {
+      title: "Grocery Shop Management System",
+      description: "Developed a Python-based application to manage grocery shop operations efficiently. Integrated SQL database to store and retrieve product details, inventory, and transaction records. Implemented features like inventory management, billing, and customer details tracking for streamlined operations.",
+      image: "https://placehold.co/600x400.png",
+      hint: "retail management",
+      tags: ["Python", "SQL", "Inventory Management"],
+    }
+  ],
+  skills: {
+    languages: ["C", "Java", "Python", "JavaScript", "Typescript"],
+    technologies: ["Crewai", "HTML", "CSS", "React", "NodeJS", "Spring", "NumPy", "Pandas", "Scikit-learn", "MySQL", "Git", "GitHub", "REST API", "TensorFlow", "NLP"]
+  },
+  experience: [
+    {
+      company: "JPMorgan Chase & Co.",
+      role: "Software Engineering Virtual Internship",
+      period: "Virtual Internship",
+      description: [
+        "Developed scalable applications using Spring, Java, and REST APIs, ensuring seamless communication between front-end and back-end services.",
+        "Designed and implemented real-time data pipelines using Kafka, optimizing data flow and enabling efficient processing of large-scale data.",
+        "Optimized SQL queries for improved database performance, reducing load times and ensuring smooth integration with backend systems."
+      ]
+    },
+    {
+      company: "AICTE",
+      role: "AI Intern – Virtual Internship",
+      period: "Virtual Internship",
+      description: [
+        "Developed a chatbot using NLP techniques to improve user engagement and interaction, ensuring accurate responses to queries.",
+        "Implemented conversational flows and applied machine learning algorithms to enhance chatbot accuracy and adaptability over time.",
+        "Documented the entire project lifecycle, including requirement gathering, development, and testing phases."
+      ]
+    }
+  ]
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-dvh bg-background text-foreground">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <a href="#" className="text-2xl font-bold font-headline">
-              MSG
+              {portfolioData.name.split(" ").map(n => n[0]).join('')}
             </a>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
@@ -27,7 +81,7 @@ export default function Home() {
 
             <div className="hidden md:block">
               <Button asChild className="shadow-[0_0_15px_hsl(var(--primary)/50%)] hover:shadow-[0_0_25px_hsl(var(--primary)/50%)] transition-shadow">
-                <a href="mailto:shivaganeshmummadi7@gmail.com">
+                <a href={`mailto:${portfolioData.email}`}>
                   Contact Me <Mail className="ml-2 h-4 w-4" />
                 </a>
               </Button>
@@ -50,7 +104,7 @@ export default function Home() {
                       <SheetClose asChild><a href="#projects" className="hover:text-primary transition-colors">Projects</a></SheetClose>
                       <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
                       <SheetClose asChild><a href="#experience" className="hover:text-primary transition-colors">Experience</a></SheetClose>
-                      <SheetClose asChild><a href="mailto:shivaganeshmummadi7@gmail.com" className="hover:text-primary transition-colors mt-4">Contact Me</a></SheetClose>
+                      <SheetClose asChild><a href={`mailto:${portfolioData.email}`} className="hover:text-primary transition-colors mt-4">Contact Me</a></SheetClose>
                     </nav>
                   </div>
                 </SheetContent>
@@ -60,36 +114,121 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="flex-grow flex items-center justify-center">
-        <div className="text-center">
+      <div className="flex-grow">
+        <main id="hero" className="flex flex-col min-h-dvh items-center justify-center text-center px-4">
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                <span className="text-accent">Mummadi Shiva Ganesh</span>
+                <span className="text-primary">{portfolioData.name}</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '200ms'}}>
-                Software Engineer & AI Enthusiast. I build scalable applications and explore the frontiers of Artificial Intelligence.
+                {portfolioData.description}
             </p>
-            <div className="mt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '400ms'}}>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '400ms'}}>
               <Button size="lg" className="shadow-[0_0_20px_hsl(var(--primary))] hover:shadow-[0_0_30px_hsl(var(--primary))] transition-shadow" asChild>
                 <a href="#projects">View My Work <ArrowRight className="ml-2 h-5 w-5" /></a>
               </Button>
             </div>
-        </div>
-      </main>
+        </main>
+        
+        <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+              <Star className="text-primary"/>
+              Projects
+            </h2>
+            <p className="text-muted-foreground mt-2">A selection of my work.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {portfolioData.projects.map((project, index) => (
+              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 overflow-hidden">
+                <CardHeader>
+                  <Image src={project.image} alt={project.title} width={600} height={400} className="rounded-t-lg" data-ai-hint={project.hint}/>
+                  <CardTitle className="pt-4">{project.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardContent>
+                <CardFooter className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-      <footer className="absolute bottom-10 w-full">
-        <div className="container mx-auto flex justify-center gap-6 text-muted-foreground text-sm">
-          <a href="https://www.linkedin.com/in/mummadishivaganesh" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-            <Linkedin className="h-6 w-6" />
-            <span className="sr-only">LinkedIn</span>
-          </a>
-          <a href="https://github.com/MummadiShivaGanesh" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-            <Github className="h-6 w-6" />
-            <span className="sr-only">GitHub</span>
-          </a>
-          <a href="mailto:shivaganeshmummadi7@gmail.com" className="hover:text-primary transition-colors">
-            <Mail className="h-6 w-6" />
-            <span className="sr-only">Email</span>
-          </a>
+        <section id="skills" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+              <Code className="text-primary"/>
+              Skills & Interests
+            </h2>
+            <p className="text-muted-foreground mt-2">My technical toolbox.</p>
+          </div>
+          <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-bold mb-4 text-primary">Languages</h3>
+                <div className="flex flex-wrap gap-2">
+                  {portfolioData.skills.languages.map(skill => <Badge key={skill}>{skill}</Badge>)}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-4 text-primary">Technologies & Tools</h3>
+                <div className="flex flex-wrap gap-2">
+                  {portfolioData.skills.technologies.map(skill => <Badge key={skill}>{skill}</Badge>)}
+                </div>
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        <section id="experience" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+              <Briefcase className="text-primary"/>
+              Work Experience
+            </h2>
+            <p className="text-muted-foreground mt-2">My professional journey.</p>
+          </div>
+          <div className="space-y-8">
+            {portfolioData.experience.map((job, index) => (
+              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle>{job.role}</CardTitle>
+                      <CardDescription className="text-base">{job.company}</CardDescription>
+                    </div>
+                    <Badge variant="outline">{job.period}</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                    {job.description.map((point, i) => <li key={i}>{point}</li>)}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <footer className="w-full py-10">
+        <div className="container mx-auto flex flex-col items-center gap-6 text-muted-foreground text-sm">
+          <div className="flex justify-center gap-6">
+            <a href={portfolioData.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <Linkedin className="h-6 w-6" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+            <a href={portfolioData.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <Github className="h-6 w-6" />
+              <span className="sr-only">GitHub</span>
+            </a>
+            <a href={`mailto:${portfolioData.email}`} className="hover:text-primary transition-colors">
+              <Mail className="h-6 w-6" />
+              <span className="sr-only">Email</span>
+            </a>
+          </div>
+          <p>&copy; {new Date().getFullYear()} {portfolioData.name}. All rights reserved.</p>
         </div>
       </footer>
     </div>
