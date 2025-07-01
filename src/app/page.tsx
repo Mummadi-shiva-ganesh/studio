@@ -28,7 +28,7 @@ const portfolioData = {
   title: "Software Engineer & AI Enthusiast",
   email: "shivaganeshmummadi7@gmail.com",
   phone: "+91 6304732932",
-  avatarUrl: "https://firebasestudio-hosting.web.app/images/15e75180-2a81-4357-ac8e-e2c72b226e63.png",
+  avatarUrl: "https://firebasestudio-hosting.web.app/images/5f02c63f-67f7-466d-8e6d-741a4a159955.png",
   stats: {
     internships: 2,
     projects: 2,
@@ -37,16 +37,23 @@ const portfolioData = {
   aboutMe: `A dedicated and innovative Computer Science and Engineering student from Sphoorthy Engineering Hyderabad. Passionate about software engineering and artificial intelligence, with hands-on experience in developing scalable applications and AI-driven solutions. Proven ability to work with modern technologies like Java, Spring, Python, and TensorFlow. Eager to leverage my skills to build impactful products and contribute to a forward-thinking team.`,
   skillsDescription: `I possess a diverse skill set spanning multiple programming languages and cutting-edge technologies. My expertise includes C, Java, Python, JavaScript, and TypeScript. I am proficient in frameworks and tools such as React, Node.js, Spring, and Crew.ai, and have a strong background in data science with NumPy, Pandas, Scikit-learn, and TensorFlow.`,
   skills: [
+    { name: "C", icon: "Code" },
     { name: "Java", icon: "Code" },
     { name: "Python", icon: "Code" },
     { name: "JavaScript", icon: "CodeXml" },
     { name: "TypeScript", icon: "CodeXml" },
+    { name: "HTML", icon: "CodeXml" },
+    { name: "CSS", icon: "CodeXml" },
     { name: "React", icon: "CodeXml" },
     { name: "Node.js", icon: "Server" },
     { name: "Spring", icon: "Package" },
     { name: "Crew.ai", icon: "Bot" },
     { name: "TensorFlow", icon: "BrainCircuit" },
     { name: "MySQL", icon: "Database" },
+    { name: "Git", icon: "GitBranch" },
+    { name: "GitHub", icon: "Github" },
+    { name: "REST API", icon: "Server" },
+    { name: "NLP", icon: "BrainCircuit" },
   ],
   projects: [
     {
