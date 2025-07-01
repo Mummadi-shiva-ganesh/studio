@@ -68,7 +68,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-dvh bg-background text-foreground animated-grid">
+    <div className="flex flex-col min-h-dvh bg-background text-foreground">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">

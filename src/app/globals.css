@@ -87,31 +87,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .animated-grid {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .animated-grid::before {
-    content: '';
-    position: absolute;
-    inset: -100vmax;
-    z-index: 0;
-    background-image:
-      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
-      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 2rem 2rem;
-    animation: grid-scroll 60s linear infinite;
-  }
-}
-
-@keyframes grid-scroll {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-2rem, -2rem);
-  }
-}
