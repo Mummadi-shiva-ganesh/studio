@@ -68,7 +68,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-dvh bg-background text-foreground">
+    <div className="flex flex-col min-h-dvh bg-background text-foreground animated-grid">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -120,7 +120,7 @@ export default function Home() {
       </header>
 
       <div className="flex-grow">
-        <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
+        <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 <span className="text-primary">{portfolioData.name}</span>
