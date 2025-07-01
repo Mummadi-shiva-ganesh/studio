@@ -15,6 +15,8 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
@@ -149,7 +151,10 @@ export default async function Home() {
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="right">
-                    <div className="flex flex-col p-6 h-full">
+                    <SheetHeader>
+                      <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    </SheetHeader>
+                    <div className="flex flex-col h-full">
                       <nav className="flex flex-col gap-4 text-lg font-medium mt-8">
                         <SheetClose asChild><a href="#home" className="hover:text-primary transition-colors">Home</a></SheetClose>
                         <SheetClose asChild><a href="#about" className="hover:text-primary transition-colors">About</a></SheetClose>
