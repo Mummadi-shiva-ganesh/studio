@@ -96,8 +96,8 @@ export default async function Home() {
     highlightedAboutMe = result.highlightedAboutMe;
     highlightedSkillsDescription = result.highlightedSkillsDescription;
   } catch (error) {
-    console.error("Failed to highlight resume content. This might be due to a missing API key.", error);
-    // Fallback to original content is already handled by initial variable assignment.
+    // The call to highlight content can fail if the API key is not set.
+    // In this case, we'll just use the original content.
   }
 
   return (
