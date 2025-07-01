@@ -16,10 +16,10 @@ const portfolioData = {
   name: "Mummadi Shiva Ganesh",
   email: "shivaganeshmummadi7@gmail.com",
   linkedin: "https://www.linkedin.com/in/mummadishivaganesh",
-  github: "https://github.com/MummadiShivaGanesh",
+  github: "https://github.com/Mummadi-shiva-ganesh",
   title: "Software Engineer & AI Enthusiast",
   description: "I build scalable applications and explore the frontiers of Artificial Intelligence.",
-  about: "Driven by a passion for building innovative solutions, I am a Software Engineer with a strong foundation in both front-end and back-end development. My journey in tech has been fueled by a fascination with Artificial Intelligence and its potential to solve real-world problems. I enjoy tackling complex challenges, collaborating with teams, and continuously learning to stay at the forefront of technology. When I'm not coding, I enjoy exploring new AI models and contributing to open-source projects.",
+  about: "I am a 3rd year CSE AIML student at Sphoorthy Engineering College. Driven by a passion for building innovative solutions, I have a strong foundation in both front-end and back-end development. My journey in tech has been fueled by a fascination with Artificial Intelligence and its potential to solve real-world problems. I enjoy tackling complex challenges, collaborating with teams, and continuously learning to stay at the forefront of technology. When I'm not coding, I enjoy exploring new AI models and contributing to open-source projects.",
   projects: [
     {
       title: "Multi-Agent Blog Writing System using Crewa.ai",
