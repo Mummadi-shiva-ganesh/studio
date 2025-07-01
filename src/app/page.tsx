@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Menu } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Menu } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -15,20 +15,20 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <a href="#home" className="text-2xl font-bold font-headline">
-              Kalakar
+            <a href="#" className="text-2xl font-bold font-headline">
+              MSG
             </a>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-              <a href="#" className="hover:text-primary transition-colors">About</a>
-              <a href="#" className="hover:text-primary transition-colors">Testimonials</a>
-              <a href="#" className="hover:text-primary transition-colors">Pricing</a>
+              <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
+              <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
+              <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
             </nav>
 
             <div className="hidden md:block">
               <Button asChild className="shadow-[0_0_15px_hsl(var(--primary)/50%)] hover:shadow-[0_0_25px_hsl(var(--primary)/50%)] transition-shadow">
-                <a href="#">
-                  Sign In <ArrowRight className="ml-2 h-4 w-4" />
+                <a href="mailto:shivaganeshmummadi7@gmail.com">
+                  Contact Me <Mail className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
@@ -47,10 +47,10 @@ export default function Home() {
                   </SheetHeader>
                   <div className="flex flex-col h-full pt-12">
                     <nav className="flex flex-col gap-6 text-lg font-medium">
-                      <SheetClose asChild><a href="#" className="hover:text-primary transition-colors">About</a></SheetClose>
-                      <SheetClose asChild><a href="#" className="hover:text-primary transition-colors">Testimonials</a></SheetClose>
-                      <SheetClose asChild><a href="#" className="hover:text-primary transition-colors">Pricing</a></SheetClose>
-                      <SheetClose asChild><a href="#" className="hover:text-primary transition-colors mt-4">Sign In</a></SheetClose>
+                      <SheetClose asChild><a href="#projects" className="hover:text-primary transition-colors">Projects</a></SheetClose>
+                      <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
+                      <SheetClose asChild><a href="#experience" className="hover:text-primary transition-colors">Experience</a></SheetClose>
+                      <SheetClose asChild><a href="mailto:shivaganeshmummadi7@gmail.com" className="hover:text-primary transition-colors mt-4">Contact Me</a></SheetClose>
                     </nav>
                   </div>
                 </SheetContent>
@@ -63,26 +63,33 @@ export default function Home() {
       <main className="flex-grow flex items-center justify-center">
         <div className="text-center">
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                <span className="text-accent">Captioning</span> Software,
-                <br />
-                Made by Desi Creators,
-                <br />
-                For Desi Creators
+                <span className="text-accent">Mummadi Shiva Ganesh</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '200ms'}}>
-                Auto-generate accurate captions in all major desi languages in seconds
+                Software Engineer & AI Enthusiast. I build scalable applications and explore the frontiers of Artificial Intelligence.
             </p>
             <div className="mt-10 animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '400ms'}}>
-              <Button size="lg" className="shadow-[0_0_20px_hsl(var(--primary))] hover:shadow-[0_0_30px_hsl(var(--primary))] transition-shadow">
-                Get started now <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" className="shadow-[0_0_20px_hsl(var(--primary))] hover:shadow-[0_0_30px_hsl(var(--primary))] transition-shadow" asChild>
+                <a href="#projects">View My Work <ArrowRight className="ml-2 h-5 w-5" /></a>
               </Button>
             </div>
         </div>
       </main>
 
       <footer className="absolute bottom-10 w-full">
-        <div className="container mx-auto text-center text-muted-foreground text-sm">
-          <p>They trust us</p>
+        <div className="container mx-auto flex justify-center gap-6 text-muted-foreground text-sm">
+          <a href="https://www.linkedin.com/in/mummadishivaganesh" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            <Linkedin className="h-6 w-6" />
+            <span className="sr-only">LinkedIn</span>
+          </a>
+          <a href="https://github.com/MummadiShivaGanesh" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            <Github className="h-6 w-6" />
+            <span className="sr-only">GitHub</span>
+          </a>
+          <a href="mailto:shivaganeshmummadi7@gmail.com" className="hover:text-primary transition-colors">
+            <Mail className="h-6 w-6" />
+            <span className="sr-only">Email</span>
+          </a>
         </div>
       </footer>
     </div>
