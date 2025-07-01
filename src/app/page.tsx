@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star } from "lucide-react";
+import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -23,15 +23,13 @@ const portfolioData = {
     {
       title: "Multi-Agent Blog Writing System using Crewa.ai",
       description: "Built a multi-agent system leveraging Crewa.ai to automate blog creation and streamline the writing process. Designed agents for content generation, language refinement, and topic research, utilizing AI and NLP techniques. Enhanced efficiency by producing high-quality, well-structured, and audience-tailored content.",
-      image: "https://placehold.co/600x400.png",
-      hint: "AI writing",
+      icon: "Bot",
       tags: ["Crewa.ai", "Python", "NLP", "AI"],
     },
     {
       title: "Grocery Shop Management System",
       description: "Developed a Python-based application to manage grocery shop operations efficiently. Integrated SQL database to store and retrieve product details, inventory, and transaction records. Implemented features like inventory management, billing, and customer details tracking for streamlined operations.",
-      image: "https://placehold.co/600x400.png",
-      hint: "retail management",
+      icon: "ShoppingCart",
       tags: ["Python", "SQL", "Inventory Management"],
     }
   ],
@@ -64,6 +62,11 @@ const portfolioData = {
 };
 
 export default function Home() {
+  const projectIcons = {
+    Bot: Bot,
+    ShoppingCart: ShoppingCart,
+  };
+
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
@@ -138,20 +141,24 @@ export default function Home() {
             <p className="text-muted-foreground mt-2">A selection of my work.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {portfolioData.projects.map((project, index) => (
-              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 overflow-hidden">
+            {portfolioData.projects.map((project, index) => {
+              const IconComponent = projectIcons[project.icon as keyof typeof projectIcons];
+              return (
+              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 overflow-hidden flex flex-col h-full">
                 <CardHeader>
-                  <Image src={project.image} alt={project.title} width={600} height={400} className="rounded-t-lg" data-ai-hint={project.hint}/>
+                  <div className="aspect-video bg-secondary/50 flex items-center justify-center rounded-lg">
+                    {IconComponent && <IconComponent className="w-16 h-16 text-primary" />}
+                  </div>
                   <CardTitle className="pt-4">{project.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <CardDescription>{project.description}</CardDescription>
                 </CardContent>
                 <CardFooter className="flex flex-wrap gap-2">
                   {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
                 </CardFooter>
               </Card>
-            ))}
+            )})}
           </div>
         </section>
 
