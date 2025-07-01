@@ -28,7 +28,6 @@ const portfolioData = {
   title: "Software Engineer & AI Enthusiast",
   email: "shivaganeshmummadi7@gmail.com",
   phone: "+91 6304732932",
-  avatarUrl: "/images/avatar.png",
   stats: {
     internships: 2,
     projects: 2,
@@ -159,8 +158,8 @@ export default async function Home() {
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="right">
-                    <SheetHeader>
-                      <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    <SheetHeader className="sr-only">
+                      <SheetTitle>Navigation Menu</SheetTitle>
                     </SheetHeader>
                     <div className="flex flex-col h-full pt-6">
                       <nav className="flex flex-col gap-4 text-lg font-medium">
@@ -195,7 +194,6 @@ export default async function Home() {
               <HeroSection
                 name={portfolioData.name}
                 title={portfolioData.title}
-                avatarUrl={portfolioData.avatarUrl}
                 stats={portfolioData.stats}
               />
             </div>
