@@ -28,7 +28,7 @@ const portfolioData = {
   title: "Software Engineer & AI Enthusiast",
   email: "shivaganeshmummadi7@gmail.com",
   phone: "+91 6304732932",
-  avatarUrl: "https://placehold.co/128x128.png",
+  avatarUrl: "https://firebasestudio-hosting.web.app/images/15e75180-2a81-4357-ac8e-e2c72b226e63.png",
   stats: {
     internships: 2,
     projects: 2,
@@ -107,6 +107,7 @@ export default async function Home() {
   } catch (error) {
     // The call to highlight content can fail if the API key is not set.
     // In this case, we'll just use the original content.
+    // console.error("Failed to highlight resume content. This might be due to a missing API key.", error);
   }
 
   return (
@@ -154,8 +155,8 @@ export default async function Home() {
                     <SheetHeader>
                       <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                     </SheetHeader>
-                    <div className="flex flex-col h-full">
-                      <nav className="flex flex-col gap-4 text-lg font-medium mt-8">
+                    <div className="flex flex-col h-full pt-6">
+                      <nav className="flex flex-col gap-4 text-lg font-medium">
                         <SheetClose asChild><a href="#home" className="hover:text-primary transition-colors">Home</a></SheetClose>
                         <SheetClose asChild><a href="#about" className="hover:text-primary transition-colors">About</a></SheetClose>
                         <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
