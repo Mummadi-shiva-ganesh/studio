@@ -1,6 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Briefcase, Code, Github, Linkedin, Mail, Star } from "lucide-react";
 
 export default function Loading() {
   return (
@@ -10,6 +9,7 @@ export default function Loading() {
           <div className="flex items-center justify-between h-20">
             <Skeleton className="h-8 w-12 rounded-md" />
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+              <Skeleton className="h-4 w-16 rounded-md" />
               <Skeleton className="h-4 w-16 rounded-md" />
               <Skeleton className="h-4 w-16 rounded-md" />
               <Skeleton className="h-4 w-16 rounded-md" />
@@ -34,6 +34,20 @@ export default function Loading() {
           </div>
         </main>
         
+        <section id="about" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Skeleton className="h-9 sm:h-10 w-48 mx-auto rounded-md" />
+            <Skeleton className="h-5 w-64 mx-auto mt-2 rounded-md" />
+          </div>
+          <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto">
+              <CardContent className="space-y-2 p-0">
+                  <Skeleton className="h-4 w-full rounded-md" />
+                  <Skeleton className="h-4 w-full rounded-md" />
+                  <Skeleton className="h-4 w-5/6 mx-auto rounded-md" />
+              </CardContent>
+          </Card>
+        </section>
+
         <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Skeleton className="h-9 sm:h-10 w-48 mx-auto rounded-md" />

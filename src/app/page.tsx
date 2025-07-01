@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart } from "lucide-react";
+import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -19,6 +19,7 @@ const portfolioData = {
   github: "https://github.com/MummadiShivaGanesh",
   title: "Software Engineer & AI Enthusiast",
   description: "I build scalable applications and explore the frontiers of Artificial Intelligence.",
+  about: "Driven by a passion for building innovative solutions, I am a Software Engineer with a strong foundation in both front-end and back-end development. My journey in tech has been fueled by a fascination with Artificial Intelligence and its potential to solve real-world problems. I enjoy tackling complex challenges, collaborating with teams, and continuously learning to stay at the forefront of technology. When I'm not coding, I enjoy exploring new AI models and contributing to open-source projects.",
   projects: [
     {
       title: "Multi-Agent Blog Writing System using Crewa.ai",
@@ -78,6 +79,7 @@ export default function Home() {
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
               <a href="#hero" className="hover:text-primary transition-colors">Home</a>
+              <a href="#about" className="hover:text-primary transition-colors">About</a>
               <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
               <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
               <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
@@ -106,6 +108,7 @@ export default function Home() {
                   <div className="flex flex-col h-full pt-12">
                     <nav className="flex flex-col gap-6 text-lg font-medium">
                       <SheetClose asChild><a href="#hero" className="hover:text-primary transition-colors">Home</a></SheetClose>
+                      <SheetClose asChild><a href="#about" className="hover:text-primary transition-colors">About</a></SheetClose>
                       <SheetClose asChild><a href="#projects" className="hover:text-primary transition-colors">Projects</a></SheetClose>
                       <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
                       <SheetClose asChild><a href="#experience" className="hover:text-primary transition-colors">Experience</a></SheetClose>
@@ -136,6 +139,21 @@ export default function Home() {
           </div>
         </main>
         
+        <section id="about" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+                <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
+                    <User className="text-primary"/>
+                    About Me
+                </h2>
+                <p className="text-muted-foreground mt-2">A little bit about my journey.</p>
+            </div>
+            <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto">
+                <CardContent className="text-center p-0">
+                    <p className="text-muted-foreground leading-relaxed">{portfolioData.about}</p>
+                </CardContent>
+            </Card>
+        </section>
+
         <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
