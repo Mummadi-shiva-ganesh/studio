@@ -11,7 +11,6 @@ import {
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { F1CarCanvas } from "@/components/ui/f1-car";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -126,12 +125,9 @@ export default function Home() {
       <div className="flex-grow">
         <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
-            <div className="relative w-full flex justify-center items-center h-48">
-              <F1CarCanvas />
-              <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000 relative z-10">
-                  <span className="text-primary">{portfolioData.name}</span>
-              </h1>
-            </div>
+            <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                <span className="text-primary">{portfolioData.name}</span>
+            </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '200ms'}}>
                 {portfolioData.description}
             </p>
