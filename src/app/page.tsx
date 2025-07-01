@@ -115,7 +115,7 @@ export default async function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
-              <a href="#home" className="text-2xl font-bold font-headline text-primary">Crescere Portfolio</a>
+              <a href="#home" className="text-2xl font-bold font-headline text-primary">Portfolio</a>
               
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
                 <a href="#about" className="hover:text-primary transition-colors">About</a>
