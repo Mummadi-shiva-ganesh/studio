@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cpu, Database, Code, CodeXml, PenTool, Server } from "lucide-react";
+import { Cpu, Database, Code, CodeXml, PenTool, Server, Bot, Package, BrainCircuit } from "lucide-react";
 
 const iconMap: { [key: string]: React.ElementType } = {
   Cpu,
@@ -8,6 +8,9 @@ const iconMap: { [key: string]: React.ElementType } = {
   CodeXml,
   PenTool,
   Server,
+  Bot,
+  Package,
+  BrainCircuit,
 };
 
 type Skill = {
@@ -36,7 +39,7 @@ export function SkillsSection({ skills, highlightedSkillsDescription }: SkillsSe
             />
           </CardContent>
         </Card>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
           {skills.map((skill) => {
             const IconComponent = iconMap[skill.icon] || Code;
             return (

@@ -10,75 +10,68 @@ import { Github, Linkedin } from "lucide-react";
 
 // Mock data for the portfolio
 const portfolioData = {
-  name: "Alex Doe",
-  title: "Aspiring Software Engineer",
+  name: "Mummadi Shiva Ganesh",
+  title: "Software Engineer & AI Enthusiast",
   avatarUrl: "https://placehold.co/128x128.png",
   stats: {
     internships: 2,
-    projects: 5,
-    programmingLanguages: 8,
+    projects: 2,
+    programmingLanguages: 5,
   },
-  aboutMe: `A highly motivated and detail-oriented computer science student with a passion for developing innovative software solutions. Experienced in full-stack development, with a strong foundation in data structures, algorithms, and object-oriented programming. Seeking challenging internship opportunities to apply and expand my technical skills in a real-world setting.`,
-  skillsDescription: `I have experience with a variety of technologies for front-end and back-end development. My skillset includes JavaScript frameworks like React and Next.js, along with Python for server-side logic and SQL for database management. I am also proficient in using modern development tools and cloud platforms.`,
+  aboutMe: `A dedicated and innovative Computer Science and Engineering student from Sphoorthy Engineering Hyderabad. Passionate about software engineering and artificial intelligence, with hands-on experience in developing scalable applications and AI-driven solutions. Proven ability to work with modern technologies like Java, Spring, Python, and TensorFlow. Eager to leverage my skills to build impactful products and contribute to a forward-thinking team.`,
+  skillsDescription: `I possess a diverse skill set spanning multiple programming languages and cutting-edge technologies. My expertise includes C, Java, Python, JavaScript, and TypeScript. I am proficient in frameworks and tools such as React, Node.js, Spring, and Crew.ai, and have a strong background in data science with NumPy, Pandas, Scikit-learn, and TensorFlow.`,
   skills: [
-    { name: "React", icon: "CodeXml" },
-    { name: "Next.js", icon: "CodeXml" },
-    { name: "TypeScript", icon: "Code" },
+    { name: "Java", icon: "Code" },
     { name: "Python", icon: "Code" },
+    { name: "JavaScript", icon: "CodeXml" },
+    { name: "TypeScript", icon: "CodeXml" },
+    { name: "React", icon: "CodeXml" },
     { name: "Node.js", icon: "Server" },
+    { name: "Spring", icon: "Package" },
+    { name: "Crew.ai", icon: "Bot" },
+    { name: "TensorFlow", icon: "BrainCircuit" },
     { name: "SQL", icon: "Database" },
-    { name: "Figma", icon: "PenTool" },
-    { name: "Docker", icon: "Cpu" },
   ],
   projects: [
     {
-      title: "E-commerce Platform",
-      description: "A full-featured online store with product listings, a shopping cart, and a secure checkout process. Built with a modern tech stack for optimal performance.",
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
+      title: "Multi-Agent Blog Writing System",
+      description: "Built a multi-agent system leveraging Crew.ai to automate blog creation. Designed agents for content generation, language refinement, and topic research to produce high-quality, audience-tailored content efficiently.",
+      techStack: ["Crew.ai", "Python", "NLP", "AI"],
       liveLink: "#",
       repoLink: "#",
       imageUrl: "https://placehold.co/600x400.png",
-      imageHint: "website ecommerce"
+      imageHint: "ai writing blog"
     },
     {
-      title: "Task Management App",
-      description: "A collaborative tool to help teams organize tasks, set deadlines, and track progress. Features a drag-and-drop interface and real-time updates.",
-      techStack: ["React", "Firebase", "Material-UI"],
+      title: "Grocery Shop Management System",
+      description: "Developed a Python-based web application to manage grocery shop operations, including inventory, billing, and customer details, using a SQL database for real-time data accuracy.",
+      techStack: ["Python", "SQL", "Web Application"],
       liveLink: "#",
       repoLink: "#",
       imageUrl: "https://placehold.co/600x400.png",
-      imageHint: "application interface"
-    },
-    {
-      title: "Portfolio Website",
-      description: "This very portfolio, designed to showcase my skills and projects using modern web technologies and a GenAI-powered content highlighter.",
-      techStack: ["Next.js", "GenAI", "Tailwind CSS", "Vercel"],
-      liveLink: "#",
-      repoLink: "#",
-      imageUrl: "https://placehold.co/600x400.png",
-      imageHint: "portfolio design"
-    },
+      imageHint: "grocery store checkout"
+    }
   ],
   internships: [
     {
-      company: "Innovatech Solutions",
-      role: "Software Engineer Intern",
-      period: "May 2023 - Aug 2023",
-      description: "Contributed to the development of a client-facing web application, focusing on front-end features and API integration. Worked in an Agile team, participating in daily stand-ups and sprint planning.",
+      company: "JPMorgan Chase & Co.",
+      role: "Software Engineering Virtual Intern",
+      period: "Summer 2023",
+      description: "Developed scalable applications using Spring, Java, and REST APIs. Designed and implemented real-time data pipelines using Kafka and optimized SQL queries for improved database performance.",
       logoUrl: "https://placehold.co/40x40.png",
-      logoHint: "abstract logo"
+      logoHint: "finance logo"
     },
     {
-      company: "DataDriven Inc.",
-      role: "Data Analyst Intern",
-      period: "Jan 2023 - Apr 2023",
-      description: "Analyzed large datasets to extract actionable insights for the marketing team. Developed Python scripts for data cleaning and visualization, and created dashboards to track key performance indicators.",
+      company: "AICTE",
+      role: "AI Intern – Virtual Internship",
+      period: "Spring 2023",
+      description: "Developed an NLP-powered chatbot to improve user engagement. Implemented conversational flows and applied machine learning algorithms to enhance chatbot accuracy and adaptability.",
       logoUrl: "https://placehold.co/40x40.png",
-      logoHint: "data chart"
+      logoHint: "government seal"
     },
   ],
   contact: {
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/mummadishivaganesh",
     github: "https://github.com/",
   }
 };
