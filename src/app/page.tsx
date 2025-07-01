@@ -120,7 +120,7 @@ export default function Home() {
       </header>
 
       <div className="flex-grow">
-        <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 overflow-hidden">
+        <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 <span className="text-primary">{portfolioData.name}</span>

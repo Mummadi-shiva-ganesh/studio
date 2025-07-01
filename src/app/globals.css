@@ -87,3 +87,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .animated-grid {
+    background-size: 80px 80px;
+    background-image:
+        linear-gradient(to right, hsla(var(--primary)/.1) 1px, transparent 1px),
+        linear-gradient(to bottom, hsla(var(--primary)/.1) 1px, transparent 1px);
+    background-position: -1px -1px;
+    animation: scroll 15s linear infinite;
+  }
+
+  @keyframes scroll {
+      to {
+          background-position: -81px -81px;
+      }
+  }
+}
