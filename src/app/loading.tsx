@@ -27,20 +27,17 @@ export default function Loading() {
 
       <div className="flex-grow">
         <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
-          <div className="relative z-10 flex flex-col items-center">
-             <Skeleton className="h-16 w-[40rem] max-w-full mb-6 rounded-md" />
-             <Skeleton className="h-6 w-[28rem] max-w-full mb-10 rounded-md" />
+          <div className="relative z-10 flex flex-col items-center w-full">
+             <Skeleton className="h-12 md:h-16 w-full max-w-sm md:max-w-2xl mb-6 rounded-md" />
+             <Skeleton className="h-6 w-full max-w-xs md:max-w-lg mb-10 rounded-md" />
              <Skeleton className="h-12 w-48 rounded-md" />
           </div>
         </main>
         
         <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
-              <Star className="text-primary"/>
-              Projects
-            </h2>
-            <p className="text-muted-foreground mt-2">A selection of my work.</p>
+            <Skeleton className="h-9 sm:h-10 w-48 mx-auto rounded-md" />
+            <Skeleton className="h-5 w-64 mx-auto mt-2 rounded-md" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[1, 2].map((i) => (
@@ -68,13 +65,10 @@ export default function Loading() {
 
         <section id="skills" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
-              <Code className="text-primary"/>
-              Skills & Interests
-            </h2>
-            <p className="text-muted-foreground mt-2">My technical toolbox.</p>
+            <Skeleton className="h-9 sm:h-10 w-64 mx-auto rounded-md" />
+            <Skeleton className="h-5 w-48 mx-auto mt-2 rounded-md" />
           </div>
-          <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-8">
+          <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                <div>
                   <Skeleton className="h-6 w-32 mb-4 rounded-md" />
@@ -94,22 +88,19 @@ export default function Loading() {
 
         <section id="experience" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
-              <Briefcase className="text-primary"/>
-              Work Experience
-            </h2>
-            <p className="text-muted-foreground mt-2">My professional journey.</p>
+            <Skeleton className="h-9 sm:h-10 w-64 mx-auto rounded-md" />
+            <Skeleton className="h-5 w-56 mx-auto mt-2 rounded-md" />
           </div>
           <div className="space-y-8">
             {[1, 2].map((i) => (
               <Card key={i} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg">
                 <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div className="space-y-2">
-                      <Skeleton className="h-7 w-64 rounded-md" />
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
+                    <div className="space-y-2 w-full sm:w-auto">
+                      <Skeleton className="h-7 w-full max-w-xs rounded-md" />
                       <Skeleton className="h-5 w-48 rounded-md" />
                     </div>
-                    <Skeleton className="h-7 w-32 rounded-full" />
+                    <Skeleton className="h-7 w-32 rounded-full shrink-0" />
                   </div>
                 </CardHeader>
                 <CardContent>

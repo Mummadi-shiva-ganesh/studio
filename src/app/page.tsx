@@ -138,7 +138,7 @@ export default function Home() {
         
         <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
               <Star className="text-primary"/>
               Projects
             </h2>
@@ -168,13 +168,13 @@ export default function Home() {
 
         <section id="skills" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
               <Code className="text-primary"/>
               Skills & Interests
             </h2>
             <p className="text-muted-foreground mt-2">My technical toolbox.</p>
           </div>
-          <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-8">
+          <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-bold mb-4 text-primary">Languages</h3>
@@ -194,7 +194,7 @@ export default function Home() {
 
         <section id="experience" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold flex items-center justify-center gap-2">
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
               <Briefcase className="text-primary"/>
               Work Experience
             </h2>
@@ -204,12 +204,12 @@ export default function Home() {
             {portfolioData.experience.map((job, index) => (
               <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
                 <CardHeader>
-                  <div className="flex justify-between items-start">
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                     <div>
-                      <CardTitle>{job.role}</CardTitle>
+                      <CardTitle className="text-xl sm:text-2xl">{job.role}</CardTitle>
                       <CardDescription className="text-base">{job.company}</CardDescription>
                     </div>
-                    <Badge variant="outline">{job.period}</Badge>
+                    <Badge variant="outline" className="shrink-0">{job.period}</Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
