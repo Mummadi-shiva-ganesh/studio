@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
 import type { MenuBarItem } from "@/components/ui/bottom-menu";
+import { Timeline } from "@/components/ui/timeline";
+import Image from "next/image";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -83,6 +85,37 @@ const menuItems: MenuBarItem[] = [
     label: "Contact"
   }
 ];
+
+const experienceTimelineData = portfolioData.experience.map(job => ({
+    title: job.period,
+    content: (
+      <div>
+        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">{job.role}</h3>
+        <h4 className="text-base text-muted-foreground mb-4">{job.company}</h4>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+            {job.description.map((point, i) => <li key={i}>{point}</li>)}
+        </ul>
+        <div className="grid grid-cols-2 gap-4 mt-8">
+            <Image
+              src="https://picsum.photos/seed/jpmorgan/500/500"
+              alt="JPMorgan Chase & Co."
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              data-ai-hint="corporate building"
+            />
+            <Image
+              src="https://picsum.photos/seed/coding/500/500"
+              alt="Coding"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              data-ai-hint="software development"
+            />
+        </div>
+      </div>
+    ),
+}));
 
 export default function Home() {
   const projectIcons = {
@@ -212,34 +245,8 @@ export default function Home() {
           </Card>
         </section>
 
-        <section id="experience" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
-              <Briefcase className="text-primary"/>
-              Work Experience
-            </h2>
-            <p className="text-muted-foreground mt-2">My professional journey.</p>
-          </div>
-          <div className="space-y-8">
-            {portfolioData.experience.map((job, index) => (
-              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
-                    <div>
-                      <CardTitle className="text-xl sm:text-2xl">{job.role}</CardTitle>
-                      <CardDescription className="text-base">{job.company}</CardDescription>
-                    </div>
-                    <Badge variant="outline" className="shrink-0">{job.period}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    {job.description.map((point, i) => <li key={i}>{point}</li>)}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <section id="experience" className="bg-background w-full">
+            <Timeline data={experienceTimelineData} />
         </section>
       </div>
 
