@@ -39,7 +39,7 @@ const portfolioData = {
     {
       company: "JPMorgan Chase & Co.",
       role: "Software Engineering Virtual Internship",
-      period: "Virtual Internship",
+      period: "JPMorgan Chase & Co. Internship",
       description: [
         "Developed scalable applications using Spring, Java, and REST APIs, ensuring seamless communication between front-end and back-end services.",
         "Designed and implemented real-time data pipelines using Kafka, optimizing data flow and enabling efficient processing of large-scale data.",
@@ -49,7 +49,7 @@ const portfolioData = {
     {
       company: "AICTE",
       role: "AI Intern – Virtual Internship",
-      period: "Virtual Internship",
+      period: "AICTE Internship",
       description: [
         "Developed a chatbot using NLP techniques to improve user engagement and interaction, ensuring accurate responses to queries.",
         "Implemented conversational flows and applied machine learning algorithms to enhance chatbot accuracy and adaptability over time.",
@@ -95,24 +95,6 @@ const experienceTimelineData = portfolioData.experience.map(job => ({
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
             {job.description.map((point, i) => <li key={i}>{point}</li>)}
         </ul>
-        <div className="grid grid-cols-2 gap-4 mt-8">
-            <Image
-              src="https://picsum.photos/seed/jpmorgan/500/500"
-              alt="JPMorgan Chase & Co."
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-              data-ai-hint="corporate building"
-            />
-            <Image
-              src="https://picsum.photos/seed/coding/500/500"
-              alt="Coding"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-              data-ai-hint="software development"
-            />
-        </div>
       </div>
     ),
 }));
