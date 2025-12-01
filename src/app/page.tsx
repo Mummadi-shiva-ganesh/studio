@@ -26,13 +26,7 @@ const portfolioData = {
     {
       title: "Multi-Agent Blog Writing System",
       description: "A multi-agent system to automate blog creation and streamline content generation using CrewAI.",
-      icon: (
-        <img
-          src="https://svgl.app/library/crewai.svg"
-          alt="CrewAI logo"
-          className="h-8 w-8 object-contain dark:invert"
-        />
-      ),
+      icon: <Bot className="h-8 w-8" />,
       tags: ["Crewa.ai", "Python", "NLP", "AI"],
     },
     {
