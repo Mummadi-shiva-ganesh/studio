@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon, MessageSquare, Compass, Upload, Feather, MoreHorizontal } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -113,7 +115,8 @@ export default function Home() {
       }}
       aria-label={item.label}
       >
-        <item.icon {...props} />
+        {/* We need to call the original icon function here */}
+        {item.icon(props)}
       </a>
     )
   }));
