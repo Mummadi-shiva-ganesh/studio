@@ -1,16 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User } from "lucide-react";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon, MessageSquare, Compass, Upload, Feather, MoreHorizontal } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
+import { MenuBar } from "@/components/ui/bottom-menu";
+import type { MenuBarItem } from "@/components/ui/bottom-menu";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -62,66 +55,72 @@ const portfolioData = {
   ]
 };
 
+const menuItems: MenuBarItem[] = [
+  {
+    icon: (props) => <HomeIcon {...props} />,
+    label: "Home"
+  },
+  {
+    icon: (props) => <User {...props} />,
+    label: "About"
+  },
+  {
+    icon: (props) => <Star {...props} />,
+    label: "Projects"
+  },
+  {
+    icon: (props) => <Code {...props} />,
+    label: "Skills"
+  },
+  {
+    icon: (props) => <Briefcase {...props} />,
+    label: "Experience"
+  },
+  {
+    icon: (props) => <Mail {...props} />,
+    label: "Contact"
+  }
+];
+
 export default function Home() {
   const projectIcons = {
     Bot: Bot,
     ShoppingCart: ShoppingCart,
   };
 
+  const handleMenuClick = (label: string) => {
+    const sectionId = label.toLowerCase();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    } else if (label === 'Home') {
+      const hero = document.getElementById('hero');
+      if (hero) {
+        hero.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (label === 'Contact') {
+      window.location.href = `mailto:${portfolioData.email}`;
+    }
+  };
+
+  const menuItemsWithActions: MenuBarItem[] = menuItems.map(item => ({
+    ...item,
+    // We create a wrapper for the icon to handle the click
+    icon: (props) => (
+      <a href={`#${item.label.toLowerCase()}`} onClick={(e) => {
+        e.preventDefault();
+        handleMenuClick(item.label);
+      }}
+      aria-label={item.label}
+      >
+        <item.icon {...props} />
+      </a>
+    )
+  }));
+
+
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <a href="#" className="text-2xl font-bold font-headline">
-              {portfolioData.name.split(" ").map(n => n[0]).join('')}
-            </a>
-
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-              <a href="#hero" className="hover:text-primary transition-colors">Home</a>
-              <a href="#about" className="hover:text-primary transition-colors">About</a>
-              <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-              <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-              <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
-            </nav>
-
-            <div className="hidden md:block">
-              <Button asChild className="shadow-[0_0_15px_hsl(var(--primary)/50%)] hover:shadow-[0_0_25px_hsl(var(--primary)/50%)] transition-shadow">
-                <a href={`mailto:${portfolioData.email}`}>
-                  Contact Me <Mail className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-            </div>
-
-            <div className="md:hidden">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-6 w-6" />
-                    <span className="sr-only">Open navigation menu</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="bg-background">
-                  <SheetHeader>
-                    <SheetTitle className="sr-only">Menu</SheetTitle>
-                  </SheetHeader>
-                  <div className="flex flex-col h-full pt-12">
-                    <nav className="flex flex-col gap-6 text-lg font-medium">
-                      <SheetClose asChild><a href="#hero" className="hover:text-primary transition-colors">Home</a></SheetClose>
-                      <SheetClose asChild><a href="#about" className="hover:text-primary transition-colors">About</a></SheetClose>
-                      <SheetClose asChild><a href="#projects" className="hover:text-primary transition-colors">Projects</a></SheetClose>
-                      <SheetClose asChild><a href="#skills" className="hover:text-primary transition-colors">Skills</a></SheetClose>
-                      <SheetClose asChild><a href="#experience" className="hover:text-primary transition-colors">Experience</a></SheetClose>
-                      <SheetClose asChild><a href={`mailto:${portfolioData.email}`} className="hover:text-primary transition-colors mt-4">Contact Me</a></SheetClose>
-                    </nav>
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-          </div>
-        </div>
-      </header>
-
       <div className="flex-grow">
         <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
@@ -239,6 +238,10 @@ export default function Home() {
             ))}
           </div>
         </section>
+      </div>
+
+      <div className="fixed bottom-10 left-0 right-0 flex items-center justify-center z-50">
+        <MenuBar items={menuItemsWithActions} />
       </div>
 
       <footer className="w-full py-10">
