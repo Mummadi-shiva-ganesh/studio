@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon } from "lucide-react";
 import { AwardCard } from "@/components/ui/achievement-cards";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { MenuBar } from "@/components/ui/bottom-menu";
 import type { MenuBarItem } from "@/components/ui/bottom-menu";
 import { Timeline } from "@/components/ui/timeline";
