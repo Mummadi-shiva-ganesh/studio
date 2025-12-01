@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { AwardCard } from "@/components/ui/achievement-cards";
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
 import type { MenuBarItem } from "@/components/ui/bottom-menu";
@@ -10,6 +10,8 @@ import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
 import { AnomalousMatterHero } from "@/components/ui/anomalous-matter-hero";
 import AboutSection2 from "@/components/ui/about-section-2";
+import { motion } from "framer-motion";
+
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -21,15 +23,27 @@ const portfolioData = {
   about: "I am a 3rd year CSE AIML student at Sphoorthy Engineering College. Driven by a passion for building innovative solutions, I have a strong foundation in both front-end and back-end development. My journey in tech has been fueled by a fascination with Artificial Intelligence and its potential to solve real-world problems. I enjoy tackling complex challenges, collaborating with teams, and continuously learning to stay at the forefront of technology. When I'm not coding, I enjoy exploring new AI models and contributing to open-source projects.",
   projects: [
     {
-      title: "Multi-Agent Blog Writing System using Crewa.ai",
-      description: "Built a multi-agent system leveraging Crewa.ai to automate blog creation and streamline the writing process. Designed agents for content generation, language refinement, and topic research, utilizing AI and NLP techniques. Enhanced efficiency by producing high-quality, well-structured, and audience-tailored content.",
-      icon: "Bot",
+      title: "Multi-Agent Blog Writing System",
+      description: "A multi-agent system to automate blog creation and streamline content generation using CrewAI.",
+      icon: (
+        <img
+          src="https://svgl.app/library/crewai.svg"
+          alt="CrewAI logo"
+          className="h-8 w-8 object-contain dark:invert"
+        />
+      ),
       tags: ["Crewa.ai", "Python", "NLP", "AI"],
     },
     {
-      title: "Grocery Shop Management System",
-      description: "Developed a Python-based application to manage grocery shop operations efficiently. Integrated SQL database to store and retrieve product details, inventory, and transaction records. Implemented features like inventory management, billing, and customer details tracking for streamlined operations.",
-      icon: "ShoppingCart",
+      title: "Grocery Shop Management",
+      description: "A Python and SQL based application to manage grocery shop operations, inventory, and billing.",
+      icon: (
+        <img
+          src="https://svgl.app/library/python.svg"
+          alt="Python logo"
+          className="h-8 w-8 object-contain"
+        />
+      ),
       tags: ["Python", "SQL", "Inventory Management"],
     }
   ],
@@ -61,12 +75,30 @@ const portfolioData = {
   ]
 };
 
-export default function Home() {
-  const projectIcons = {
-    Bot: Bot,
-    ShoppingCart: ShoppingCart,
-  };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+
+export default function Home() {
   const handleMenuClick = (label: string) => {
     const sectionId = label.toLowerCase();
     const section = document.getElementById(sectionId);
@@ -145,25 +177,24 @@ export default function Home() {
             </h2>
             <p className="text-muted-foreground mt-2">A selection of my work.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {portfolioData.projects.map((project, index) => {
-              const IconComponent = projectIcons[project.icon as keyof typeof projectIcons];
-              return (
-              <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300 overflow-hidden flex flex-col h-full">
-                <CardHeader>
-                  <div className="aspect-video bg-secondary/50 flex items-center justify-center rounded-lg">
-                    {IconComponent && <IconComponent className="w-16 h-16 text-primary" />}
-                  </div>
-                  <CardTitle className="pt-4">{project.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <CardDescription>{project.description}</CardDescription>
-                </CardContent>
-                <CardFooter className="flex flex-wrap gap-2">
-                  {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-                </CardFooter>
-              </Card>
-            )})}
+          <div className="w-full max-w-6xl p-4" aria-label="Awards and Recognitions">
+            <motion.div
+              className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible"
+              role="list"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {portfolioData.projects.map((project, index) => (
+                <motion.div key={index} variants={itemVariants} role="listitem">
+                  <AwardCard
+                    icon={project.icon}
+                    title={project.title}
+                    description={project.description}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
