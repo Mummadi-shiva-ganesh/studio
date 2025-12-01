@@ -1,13 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon, MessageSquare, Compass, Upload, Feather, MoreHorizontal } from "lucide-react";
+import { ArrowRight, Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
 import type { MenuBarItem } from "@/components/ui/bottom-menu";
 import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
+import { AnomalousMatterHero } from "@/components/ui/anomalous-matter-hero";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -87,11 +88,9 @@ const menuItems: MenuBarItem[] = [
 ];
 
 const experienceTimelineData = portfolioData.experience.map(job => ({
-    title: job.period,
+    title: `${job.role} at ${job.company}`,
     content: (
       <div>
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-1">{job.role}</h3>
-        <h4 className="text-base text-muted-foreground mb-4">{job.company}</h4>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
             {job.description.map((point, i) => <li key={i}>{point}</li>)}
         </ul>
@@ -111,10 +110,7 @@ export default function Home() {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     } else if (label === 'Home') {
-      const hero = document.getElementById('hero');
-      if (hero) {
-        hero.scrollIntoView({ behavior: 'smooth' });
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (label === 'Contact') {
       window.location.href = `mailto:${portfolioData.email}`;
     }
@@ -122,17 +118,14 @@ export default function Home() {
 
   const menuItemsWithActions: MenuBarItem[] = menuItems.map(item => ({
     ...item,
-    // We create a wrapper for the icon to handle the click
     icon: (props) => (
-      <a href={`#${item.label.toLowerCase()}`} onClick={(e) => {
-        e.preventDefault();
-        handleMenuClick(item.label);
-      }}
-      aria-label={item.label}
+      <button 
+        onClick={() => handleMenuClick(item.label)} 
+        aria-label={item.label} 
+        className="w-full h-full flex items-center justify-center"
       >
-        {/* We need to call the original icon function here */}
         {item.icon(props)}
-      </a>
+      </button>
     )
   }));
 
@@ -140,20 +133,12 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
       <div className="flex-grow">
-        <main id="hero" className="relative flex flex-col min-h-dvh items-center justify-center text-center px-4 animated-grid overflow-hidden">
-          <div className="relative z-10 flex flex-col items-center">
-            <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                <span className="text-primary">{portfolioData.name}</span>
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '200ms'}}>
-                {portfolioData.description}
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{animationDelay: '400ms'}}>
-              <Button size="lg" className="shadow-[0_0_20px_hsl(var(--primary))] hover:shadow-[0_0_30px_hsl(var(--primary))] transition-shadow" asChild>
-                <a href="#projects">View My Work <ArrowRight className="ml-2 h-5 w-5" /></a>
-              </Button>
-            </div>
-          </div>
+        <main id="hero">
+          <AnomalousMatterHero 
+            title={portfolioData.name}
+            subtitle={portfolioData.title}
+            description={portfolioData.description}
+          />
         </main>
         
         <section id="about" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
