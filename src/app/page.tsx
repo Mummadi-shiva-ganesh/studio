@@ -9,6 +9,7 @@ import type { MenuBarItem } from "@/components/ui/bottom-menu";
 import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
 import { AnomalousMatterHero } from "@/components/ui/anomalous-matter-hero";
+import AboutSection2 from "@/components/ui/about-section-2";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -141,20 +142,7 @@ export default function Home() {
           />
         </main>
         
-        <section id="about" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-                <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
-                    <User className="text-primary"/>
-                    About Me
-                </h2>
-                <p className="text-muted-foreground mt-2">A little bit about my journey.</p>
-            </div>
-            <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto">
-                <CardContent className="text-center p-0">
-                    <p className="text-muted-foreground leading-relaxed">{portfolioData.about}</p>
-                </CardContent>
-            </Card>
-        </section>
+        <AboutSection2 />
 
         <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
