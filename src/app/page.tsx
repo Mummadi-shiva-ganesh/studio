@@ -61,44 +61,6 @@ const portfolioData = {
   ]
 };
 
-const menuItems: MenuBarItem[] = [
-  {
-    icon: (props) => <HomeIcon {...props} />,
-    label: "Home"
-  },
-  {
-    icon: (props) => <User {...props} />,
-    label: "About"
-  },
-  {
-    icon: (props) => <Star {...props} />,
-    label: "Projects"
-  },
-  {
-    icon: (props) => <Code {...props} />,
-    label: "Skills"
-  },
-  {
-    icon: (props) => <Briefcase {...props} />,
-    label: "Experience"
-  },
-  {
-    icon: (props) => <Mail {...props} />,
-    label: "Contact"
-  }
-];
-
-const experienceTimelineData = portfolioData.experience.map(job => ({
-    title: `${job.role} at ${job.company}`,
-    content: (
-      <div>
-        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-            {job.description.map((point, i) => <li key={i}>{point}</li>)}
-        </ul>
-      </div>
-    ),
-}));
-
 export default function Home() {
   const projectIcons = {
     Bot: Bot,
@@ -117,17 +79,48 @@ export default function Home() {
     }
   };
 
-  const menuItemsWithActions: MenuBarItem[] = menuItems.map(item => ({
-    ...item,
-    icon: (props) => (
-      <button 
-        onClick={() => handleMenuClick(item.label)} 
-        aria-label={item.label} 
-        className="w-full h-full flex items-center justify-center"
-      >
-        {item.icon(props)}
-      </button>
-    )
+  const menuItems: MenuBarItem[] = [
+    {
+      icon: (props) => <HomeIcon {...props} />,
+      label: "Home",
+      onClick: () => handleMenuClick("Home"),
+    },
+    {
+      icon: (props) => <User {...props} />,
+      label: "About",
+      onClick: () => handleMenuClick("About"),
+    },
+    {
+      icon: (props) => <Star {...props} />,
+      label: "Projects",
+      onClick: () => handleMenuClick("Projects"),
+    },
+    {
+      icon: (props) => <Code {...props} />,
+      label: "Skills",
+      onClick: () => handleMenuClick("Skills"),
+    },
+    {
+      icon: (props) => <Briefcase {...props} />,
+      label: "Experience",
+      onClick: () => handleMenuClick("Experience"),
+    },
+    {
+      icon: (props) => <Mail {...props} />,
+      label: "Contact",
+      onClick: () => handleMenuClick("Contact"),
+    }
+  ];
+
+  const experienceTimelineData = portfolioData.experience.map(job => ({
+      title: `${job.role} at ${job.company}`,
+      content: (
+        <div>
+          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              {job.description.map((point, i) => <li key={i}>{point}</li>)}
+          </ul>
+        </div>
+      ),
   }));
 
 
@@ -206,7 +199,7 @@ export default function Home() {
       </div>
 
       <div className="fixed bottom-10 left-0 right-0 flex items-center justify-center z-50">
-        <MenuBar items={menuItemsWithActions} />
+        <MenuBar items={menuItems} />
       </div>
 
       <footer className="w-full py-10">
