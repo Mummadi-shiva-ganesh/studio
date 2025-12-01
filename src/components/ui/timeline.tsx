@@ -6,6 +6,7 @@ import {
   motion,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { Briefcase } from "lucide-react";
 
 interface TimelineEntry {
   title: string;
