@@ -1,17 +1,15 @@
 "use client";
 
-import { Briefcase, Code, Github, Linkedin, Mail, Menu, Star, Bot, ShoppingCart, User, Home as HomeIcon } from "lucide-react";
+import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon } from "lucide-react";
 import { AwardCard } from "@/components/ui/achievement-cards";
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
 import type { MenuBarItem } from "@/components/ui/bottom-menu";
 import { Timeline } from "@/components/ui/timeline";
-import Image from "next/image";
 import { AnomalousMatterHero } from "@/components/ui/anomalous-matter-hero";
 import AboutSection2 from "@/components/ui/about-section-2";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { AnimatedFolder } from "@/components/ui/3d-folder";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -27,11 +25,6 @@ const portfolioData = {
       description: "A multi-agent system to automate blog creation and streamline content generation using CrewAI.",
       icon: <Bot className="h-8 w-8" />,
       tags: ["Crewa.ai", "Python", "NLP", "AI"],
-      folderProjects: [
-        { id: "1", image: "https://picsum.photos/seed/aiproject/600/400", title: "Agentic Workflow" },
-        { id: "2", image: "https://picsum.photos/seed/aiproject2/600/400", title: "Content Generation" },
-        { id: "3", image: "https://picsum.photos/seed/aiproject3/600/400", title: "CrewAI Integration" },
-      ]
     },
     {
       title: "Grocery Shop Management",
@@ -44,11 +37,6 @@ const portfolioData = {
         />
       ),
       tags: ["Python", "SQL", "Inventory Management"],
-      folderProjects: [
-         { id: "4", image: "https://i.pinimg.com/1200x/99/ca/5c/99ca5cf82cf12df8801f7b2bef38d325.jpg", title: "Database Schema" },
-         { id: "5", image: "https://picsum.photos/seed/grocery2/600/400", title: "Inventory UI" },
-         { id: "6", image: "https://picsum.photos/seed/grocery3/600/400", title: "Billing System" },
-      ]
     }
   ],
   skills: {
@@ -181,11 +169,23 @@ export default function Home() {
             </h2>
             <p className="text-muted-foreground mt-2">A selection of my work.</p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-8">
-              {portfolioData.projects.map((project) => (
-                <AnimatedFolder key={project.title} title={project.title} projects={project.folderProjects} />
-              ))}
-          </div>
+          <motion.div
+            className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-2"
+            role="list"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {portfolioData.projects.map((award, index) => (
+              <motion.div key={index} variants={itemVariants} role="listitem">
+                <AwardCard
+                  icon={award.icon}
+                  title={award.title}
+                  description={award.description}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
         </section>
 
         <section id="skills" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
