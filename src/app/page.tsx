@@ -10,7 +10,6 @@ import Image from "next/image";
 import { AnomalousMatterHero } from "@/components/ui/anomalous-matter-hero";
 import AboutSection2 from "@/components/ui/about-section-2";
 import { motion } from "framer-motion";
-import { AnimatedFolder } from "@/components/ui/3d-folder";
 import { Card } from "@/components/ui/card";
 
 const portfolioData = {
@@ -27,9 +26,6 @@ const portfolioData = {
       description: "A multi-agent system to automate blog creation and streamline content generation using CrewAI.",
       icon: <Bot className="h-8 w-8" />,
       tags: ["Crewa.ai", "Python", "NLP", "AI"],
-      folderProjects: [
-        { id: "1", image: "https://plus.unsplash.com/premium_photo-1723489242223-865b4a8cf7b8?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D$0", title: "Agent System" },
-      ]
     },
     {
       title: "Grocery Shop Management",
@@ -42,9 +38,6 @@ const portfolioData = {
         />
       ),
       tags: ["Python", "SQL", "Inventory Management"],
-      folderProjects: [
-        { id: "1", image: "https://i.pinimg.com/1200x/99/ca/5c/99ca5cf82cf12df8801f7b2bef38d325.jpg", title: "Inventory UI" },
-      ]
     }
   ],
   skills: {
@@ -175,12 +168,26 @@ export default function Home() {
               <Star className="text-primary"/>
               Projects
             </h2>
-            <p className="text-muted-foreground mt-2">A selection of my work. Hover to explore.</p>
+            <p className="text-muted-foreground mt-2">A selection of my work.</p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            {portfolioData.projects.map((project) => (
-              <AnimatedFolder key={project.title} title={project.title} projects={project.folderProjects} />
-            ))}
+          <div className="w-full max-w-6xl p-4" aria-label="Awards and Recognitions">
+            <motion.div
+              className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-3 xl:grid-cols-4"
+              role="list"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {portfolioData.projects.map((project, index) => (
+                <motion.div key={index} variants={itemVariants} role="listitem">
+                  <AwardCard
+                    icon={project.icon}
+                    title={project.title}
+                    description={project.description}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
