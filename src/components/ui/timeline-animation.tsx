@@ -37,7 +37,8 @@ export const TimelineContent: React.FC<TimelineContentProps> = ({
     hidden: { opacity: 0, y: 20 },
   };
 
-  const MotionComponent = motion(Component);
+  // motion() is deprecated, use motion.create()
+  const MotionComponent = motion.create(Component);
 
   return (
     <MotionComponent
