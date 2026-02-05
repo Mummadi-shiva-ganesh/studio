@@ -1,6 +1,7 @@
+
 "use client";
 
-import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon } from "lucide-react";
+import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon, Search, Send, GraduationCap } from "lucide-react";
 import { AwardCard } from "@/components/ui/achievement-cards";
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
@@ -13,55 +14,67 @@ import { Card } from "@/components/ui/card";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
-  email: "shivaganeshmummadi7@gmail.com",
+  email: "shivagneshmummadi7@gmail.com",
   linkedin: "https://www.linkedin.com/in/mummadishivaganesh",
   github: "https://github.com/Mummadi-shiva-ganesh",
-  title: "Software Engineer & AI Enthusiast",
-  description: "I build scalable applications and explore the frontiers of Artificial Intelligence.",
-  about: "I am a 3rd year CSE AIML student at Sphoorthy Engineering College. Driven by a passion for building innovative solutions, I have a strong foundation in both front-end and back-end development. My journey in tech has been fueled by a fascination with Artificial Intelligence and its potential to solve real-world problems. I enjoy tackling complex challenges, collaborating with teams, and continuously learning to stay at the forefront of technology. When I'm not coding, I enjoy exploring new AI models and contributing to open-source projects.",
+  title: "AI Engineer & Software Developer",
+  description: "Specializing in AI-powered solutions, RAG pipelines, and cloud architecture.",
+  about: "I am a Bachelor of Computer Engineering student with a minor in Artificial Intelligence at Sphoorthy Engineering College (GPA: 7.6). I specialize in building intelligent systems using LangChain, LLMs, and cloud-native architectures. My experience includes internships at VISWAM.AI and virtual experiences with Microsoft, SAP, and AWS.",
   projects: [
     {
-      title: "Multi-Agent Blog Writing System",
-      description: "A multi-agent system to automate blog creation and streamline content generation using CrewAI.",
-      icon: <Bot className="h-8 w-8" />,
-      tags: ["Crewa.ai", "Python", "NLP", "AI"],
+      title: "Research Assistant",
+      description: "AI-powered tool using RAG, LangChain, and FAISS to automate research with 95% relevance accuracy.",
+      icon: <Search className="h-8 w-8 text-primary" />,
+      tags: ["Python", "LangChain", "FAISS", "Ollama"],
     },
     {
-      title: "Grocery Shop Management",
-      description: "A Python and SQL based application to manage grocery shop operations, inventory, and billing.",
-      icon: (
-        <img
-          src="https://svgl.app/library/python.svg"
-          alt="Python logo"
-          className="h-8 w-8 object-contain"
-        />
-      ),
-      tags: ["Python", "SQL", "Inventory Management"],
+      title: "Cold Mail Generator",
+      description: "Automated personalized outreach tool using GROQ and vector databases for high-relevance portfolio matching.",
+      icon: <Send className="h-8 w-8 text-primary" />,
+      tags: ["Groq", "LangChain", "ChromaDB", "Python"],
     }
   ],
   skills: {
-    languages: ["C", "Java", "Python", "JavaScript", "Typescript"],
-    technologies: ["Crewai", "HTML", "CSS", "React", "NodeJS", "Spring", "NumPy", "Pandas", "Scikit-learn", "MySQL", "Git", "GitHub", "REST API", "TensorFlow", "NLP"]
+    languages: ["Python", "Java", "SQL", "JavaScript", "HTML5", "CSS", "Go", "C", "R"],
+    tools: ["AWS (EC2, S3, Lambda, RDS)", "Git", "Docker", "PowerBI", "Postman"],
+    frameworks: ["LangChain", "ReactJS", "NextJS", "Spring Boot", "Streamlit", "Flask", "FastAPI", "NodeJS"],
+    aiml: ["Machine Learning", "NLP", "LLMs", "RAG", "Transfer Learning", "FAISS", "ChromaDB", "PostgreSQL", "Hugging Face", "Ollama", "OpenAI API", "GROQ"]
   },
   experience: [
     {
-      company: "JPMorgan Chase & Co.",
-      role: "Software Engineering Virtual Internship",
-      period: "JPMorgan Chase & Co. Internship",
+      company: "VISWAM.AI",
+      role: "AI Intern",
+      period: "Jun 2025 – Aug 2025",
       description: [
-        "Developed scalable applications using Spring, Java, and REST APIs, ensuring seamless communication between front-end and back-end services.",
-        "Designed and implemented real-time data pipelines using Kafka, optimizing data flow and enabling efficient processing of large-scale data.",
-        "Optimized SQL queries for improved database performance, reducing load times and ensuring smooth integration with backend systems."
+        "Gained proficiency in Python, collaborative software development, and DevOps practices, building a strong foundation in AI engineering concepts.",
+        "Locally procured and preprocessed datasets, fine-tuned AI models using transfer learning, and deployed them using containerization and CI/CD pipelines."
       ]
     },
     {
-      company: "AICTE",
-      role: "AI Intern – Virtual Internship",
-      period: "AICTE Internship",
+      company: "Microsoft & SAP",
+      role: "AI: Transformative Learning",
+      period: "June 2024",
       description: [
-        "Developed a chatbot using NLP techniques to improve user engagement and interaction, ensuring accurate responses to queries.",
-        "Implemented conversational flows and applied machine learning algorithms to enhance chatbot accuracy and adaptability over time.",
-        "Documented the entire project lifecycle, including requirement gathering, development, and testing phases."
+        "Completed AI: Transformative Learning with TechSaksham, gaining comprehensive knowledge in AI/ML concepts and enterprise applications.",
+        "Developed practical AI skills through hands-on projects focusing on data preprocessing, model training, and deployment strategies."
+      ]
+    },
+    {
+      company: "AWS APAC",
+      role: "Solutions Architecture Virtual Experience",
+      period: "Aug 2024",
+      description: [
+        "Practiced technical communication and architecture diagram design using AWS architectural patterns on Forage.",
+        "Designed and presented a scalable hosting architecture leveraging EC2, S3, and RDS with detailed cost estimations."
+      ]
+    },
+    {
+      company: "Sphoorthy Engineering College",
+      role: "Bachelor of Computer Engineering (Minor in AI)",
+      period: "2023 – 2027",
+      description: [
+        "GPA: 7.6/10.0",
+        "Relevant Courses: Applied Machine Learning, Algorithms and Data Structures, Natural Language Processing, Data Analytics."
       ]
     }
   ]
@@ -88,7 +101,6 @@ const itemVariants = {
     },
   },
 };
-
 
 export default function Home() {
   const handleMenuClick = (label: string) => {
@@ -137,9 +149,13 @@ export default function Home() {
   ];
 
   const experienceTimelineData = portfolioData.experience.map(job => ({
-      title: `${job.role} at ${job.company}`,
+      title: job.role.includes("Bachelor") ? "Education" : `${job.role} at ${job.company}`,
       content: (
-        <div>
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+             <h4 className="font-bold text-foreground text-lg">{job.role} @ {job.company}</h4>
+             <span className="text-sm font-mono text-primary/80">{job.period}</span>
+          </div>
           <ul className="list-disc list-inside space-y-2 text-muted-foreground">
               {job.description.map((point, i) => <li key={i}>{point}</li>)}
           </ul>
@@ -165,24 +181,27 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
               <Star className="text-primary"/>
-              Projects
+              Key Projects
             </h2>
-            <p className="text-muted-foreground mt-2">A selection of my work.</p>
+            <p className="text-muted-foreground mt-2">Selected work in AI and Automation.</p>
           </div>
           <motion.div
-            className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-2"
+            className="flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-2"
             role="list"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {portfolioData.projects.map((award, index) => (
+            {portfolioData.projects.map((project, index) => (
               <motion.div key={index} variants={itemVariants} role="listitem">
                 <AwardCard
-                  icon={award.icon}
-                  title={award.title}
-                  description={award.description}
+                  icon={project.icon}
+                  title={project.title}
+                  description={project.description}
                 />
+                <div className="flex flex-wrap gap-2 mt-3 px-4">
+                   {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -192,22 +211,42 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
               <Code className="text-primary"/>
-              Skills & Interests
+              Technical Skills
             </h2>
-            <p className="text-muted-foreground mt-2">My technical toolbox.</p>
+            <p className="text-muted-foreground mt-2">My technical toolbox and expertise.</p>
           </div>
           <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4 text-primary">Languages</h3>
+                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                  <Code size={18}/> Languages
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {portfolioData.skills.languages.map(skill => <Badge key={skill}>{skill}</Badge>)}
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4 text-primary">Technologies & Tools</h3>
+                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                  <Briefcase size={18}/> Frameworks
+                </h3>
                 <div className="flex flex-wrap gap-2">
-                  {portfolioData.skills.technologies.map(skill => <Badge key={skill}>{skill}</Badge>)}
+                  {portfolioData.skills.frameworks.map(skill => <Badge key={skill}>{skill}</Badge>)}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                  <Bot size={18}/> AI & ML
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {portfolioData.skills.aiml.map(skill => <Badge key={skill}>{skill}</Badge>)}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                  <Star size={18}/> Tools
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {portfolioData.skills.tools.map(skill => <Badge key={skill}>{skill}</Badge>)}
                 </div>
               </div>
             </div>

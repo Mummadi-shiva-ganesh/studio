@@ -1,3 +1,4 @@
+
 "use client";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { Zap, User } from "lucide-react";
@@ -46,7 +47,7 @@ export default function AboutSection2() {
                     <User className="text-primary"/>
                     About Me
                 </h2>
-                <p className="text-muted-foreground mt-2">A little bit about my journey.</p>
+                <p className="text-muted-foreground mt-2">A look into my academic and professional foundation.</p>
             </div>
             <TimelineContent
               as="p"
@@ -55,7 +56,7 @@ export default function AboutSection2() {
               customVariants={revealVariants}
               className="sm:text-xl text-lg !leading-[150%] font-normal text-muted-foreground mb-8"
             >
-              I am a 3rd year CSE AIML student at Sphoorthy Engineering College. Driven by a passion for building {" "}
+              I am a Bachelor of Computer Engineering student with a minor in {" "}
               <TimelineContent
                 as="span"
                 animationNum={1}
@@ -63,9 +64,9 @@ export default function AboutSection2() {
                 customVariants={textVariants}
                 className="text-primary border-b-2 border-primary/50 border-dotted"
               >
-                innovative solutions
+                Artificial Intelligence
               </TimelineContent>
-              , I have a strong foundation in both front-end and back-end development. My journey in tech has been fueled by a fascination with {" "}
+              {" "} at Sphoorthy Engineering College (GPA: 7.6). My journey in tech is driven by a passion for building {" "}
               <TimelineContent
                 as="span"
                 animationNum={2}
@@ -73,9 +74,9 @@ export default function AboutSection2() {
                 customVariants={textVariants}
                 className="text-primary border-b-2 border-primary/50 border-dotted"
               >
-                Artificial Intelligence
+                production-ready AI systems
               </TimelineContent>{" "}
-              and its potential to solve real-world problems. I enjoy tackling complex challenges, collaborating with teams, and continuously learning to stay at the forefront of technology.
+              using RAG pipelines, LLMs, and cloud-native architectures. I focus on creating scalable, intelligent solutions that solve complex real-world challenges.
             </TimelineContent>
 
             <div className="mt-12 flex gap-2 justify-center">
@@ -88,7 +89,7 @@ export default function AboutSection2() {
                 className="bg-primary gap-2 font-medium shadow-lg shadow-primary/30 text-primary-foreground h-12 px-6 rounded-full text-sm inline-flex items-center cursor-pointer"
               >
                 <Zap fill="currentColor" size={16} />
-                View My Work
+                Explore My Work
               </TimelineContent>
             </div>
           </div>
