@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon, Search, Send, GraduationCap, Zap, Clock, Calendar, FileText } from "lucide-react";
+import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon, Search, Send, GraduationCap, Zap } from "lucide-react";
 import { AwardCard } from "@/components/ui/achievement-cards";
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
@@ -18,7 +18,7 @@ const portfolioData = {
   github: "https://github.com/Mummadi-shiva-ganesh",
   title: "AI Engineer & Software Developer",
   description: "Specializing in AI-powered solutions, RAG pipelines, and cloud architecture.",
-  about: "I am a Bachelor of Computer Engineering student with a minor in Artificial Intelligence at Sphoorthy Engineering College (GPA: 7.6). I specialize in building intelligent systems using LangChain, LLMs, and cloud-native architectures. My experience includes internships at VISWAM.AI and virtual experiences with Microsoft, SAP, and AWS.",
+  about: "I am a Bachelor of Computer Engineering student with a minor in Artificial Intelligence at Sphoorthy Engineering College (GPA: 7.6). I specialize in building intelligent systems using LangChain, LLMs, and cloud-native architectures.",
   projects: [
     {
       title: "Research Assistant",
@@ -87,7 +87,6 @@ const portfolioData = {
   ]
 };
 
-// Simple cloud icon fallback since Cloud is not in standard lucide for this set
 function CloudIcon(props: any) {
   return (
     <svg
@@ -177,9 +176,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-dvh bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
       <div className="flex-grow">
-        <main id="hero">
+        <main id="home">
           <AnomalousMatterHero 
             subtitle={portfolioData.name}
             title={portfolioData.title}
@@ -189,48 +188,49 @@ export default function Home() {
         
         <AboutSection2 />
 
-        <section id="projects" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+        <section id="projects" className="container mx-auto py-12 md:py-24 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
-              <Star className="text-primary"/>
+            <h2 className="font-headline text-2xl md:text-4xl font-bold flex items-center justify-center gap-2">
+              <Star className="text-primary w-6 h-6 md:w-8 md:h-8"/>
               Key Projects
             </h2>
-            <p className="text-muted-foreground mt-2">Selected work in AI and Automation.</p>
+            <p className="text-muted-foreground mt-2 text-sm md:text-base">Selected work in AI and Automation.</p>
           </div>
           <motion.div
-            className="flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-2"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
             role="list"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
           >
             {portfolioData.projects.map((project, index) => (
-              <motion.div key={index} variants={itemVariants} role="listitem">
+              <motion.div key={index} variants={itemVariants} role="listitem" className="flex flex-col">
                 <AwardCard
                   icon={project.icon}
                   title={project.title}
                   description={project.description}
                 />
-                <div className="flex flex-wrap gap-2 mt-3 px-4">
-                   {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                <div className="flex flex-wrap gap-2 mt-3 px-2">
+                   {project.tags.map(tag => <Badge key={tag} variant="secondary" className="text-[10px] md:text-xs">{tag}</Badge>)}
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </section>
 
-        <section id="skills" className="container mx-auto py-20 px-4 sm:px-6 lg:px-8">
+        <section id="skills" className="container mx-auto py-12 md:py-24 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
-              <Code className="text-primary"/>
+            <h2 className="font-headline text-2xl md:text-4xl font-bold flex items-center justify-center gap-2">
+              <Code className="text-primary w-6 h-6 md:w-8 md:h-8"/>
               Technical Skills
             </h2>
-            <p className="text-muted-foreground mt-2">My technical toolbox and expertise.</p>
+            <p className="text-muted-foreground mt-2 text-sm md:text-base">My technical toolbox and expertise.</p>
           </div>
           <Card className="bg-card/50 backdrop-blur-sm border-border/20 shadow-lg p-6 sm:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               <div>
-                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                <h3 className="text-base md:text-lg font-bold mb-4 text-primary flex items-center gap-2">
                   <Code size={18}/> Languages
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -238,7 +238,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                <h3 className="text-base md:text-lg font-bold mb-4 text-primary flex items-center gap-2">
                   <Briefcase size={18}/> Frameworks
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -246,7 +246,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                <h3 className="text-base md:text-lg font-bold mb-4 text-primary flex items-center gap-2">
                   <Bot size={18}/> AI & ML
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -254,7 +254,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-bold mb-4 text-primary flex items-center gap-2">
+                <h3 className="text-base md:text-lg font-bold mb-4 text-primary flex items-center gap-2">
                   <Star size={18}/> Tools
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -265,25 +265,25 @@ export default function Home() {
           </Card>
         </section>
 
-        <section id="experience" className="bg-background w-full py-32 overflow-hidden border-t border-border/20">
+        <section id="experience" className="bg-background w-full py-20 md:py-32 overflow-hidden border-t border-border/20">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
-              <Briefcase className="text-primary"/>
+            <h2 className="font-headline text-2xl md:text-4xl font-bold flex items-center justify-center gap-2">
+              <Briefcase className="text-primary w-6 h-6 md:w-8 md:h-8"/>
               Professional Journey
             </h2>
-            <p className="text-muted-foreground mt-2">A futuristic view of my career path.</p>
+            <p className="text-muted-foreground mt-2 text-sm md:text-base px-4">A futuristic view of my career path.</p>
           </div>
           <RadialOrbitalTimeline timelineData={portfolioData.experience} />
         </section>
       </div>
 
-      <div className="fixed bottom-10 left-0 right-0 flex items-center justify-center z-50">
+      <div className="fixed bottom-6 md:bottom-10 left-0 right-0 flex items-center justify-center z-50 px-4">
         <MenuBar items={menuItems} />
       </div>
 
-      <footer className="w-full py-10 border-t border-border/10">
-        <div className="container mx-auto flex flex-col items-center gap-6 text-muted-foreground text-sm">
-          <div className="flex justify-center gap-6">
+      <footer className="w-full py-10 border-t border-border/10 bg-card/20">
+        <div className="container mx-auto flex flex-col items-center gap-6 text-muted-foreground text-sm px-4">
+          <div className="flex justify-center gap-8">
             <a href={portfolioData.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
               <Linkedin className="h-6 w-6" />
               <span className="sr-only">LinkedIn</span>
@@ -297,7 +297,7 @@ export default function Home() {
               <span className="sr-only">Email</span>
             </a>
           </div>
-          <p>&copy; {new Date().getFullYear()} {portfolioData.name}. All rights reserved.</p>
+          <p className="text-center">&copy; {new Date().getFullYear()} {portfolioData.name}. Built with Next.js & AI.</p>
         </div>
       </footer>
     </div>
