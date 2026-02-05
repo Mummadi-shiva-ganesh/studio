@@ -1,16 +1,15 @@
-
 "use client";
 
-import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon, Search, Send, GraduationCap } from "lucide-react";
+import { Briefcase, Code, Github, Linkedin, Mail, Star, Bot, User, Home as HomeIcon, Search, Send, GraduationCap, Zap, Clock, Calendar, FileText } from "lucide-react";
 import { AwardCard } from "@/components/ui/achievement-cards";
 import { Badge } from "@/components/ui/badge";
 import { MenuBar } from "@/components/ui/bottom-menu";
 import type { MenuBarItem } from "@/components/ui/bottom-menu";
-import { Timeline } from "@/components/ui/timeline";
 import { AnomalousMatterHero } from "@/components/ui/anomalous-matter-hero";
 import AboutSection2 from "@/components/ui/about-section-2";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
+import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 
 const portfolioData = {
   name: "Mummadi Shiva Ganesh",
@@ -42,43 +41,72 @@ const portfolioData = {
   },
   experience: [
     {
-      company: "VISWAM.AI",
-      role: "AI Intern",
-      period: "Jun 2025 – Aug 2025",
-      description: [
-        "Gained proficiency in Python, collaborative software development, and DevOps practices, building a strong foundation in AI engineering concepts.",
-        "Locally procured and preprocessed datasets, fine-tuned AI models using transfer learning, and deployed them using containerization and CI/CD pipelines."
-      ]
+      id: 1,
+      title: "Education @ Sphoorthy",
+      date: "2023 - 2027",
+      content: "Bachelor of Computer Engineering (Minor in AI) student with 7.6 GPA. Focused on Applied Machine Learning, NLP, and Data Structures.",
+      category: "Education",
+      icon: GraduationCap,
+      relatedIds: [2],
+      status: "in-progress" as const,
+      energy: 100,
     },
     {
-      company: "Microsoft & SAP",
-      role: "AI: Transformative Learning",
-      period: "June 2024",
-      description: [
-        "Completed AI: Transformative Learning with TechSaksham, gaining comprehensive knowledge in AI/ML concepts and enterprise applications.",
-        "Developed practical AI skills through hands-on projects focusing on data preprocessing, model training, and deployment strategies."
-      ]
+      id: 2,
+      title: "AI @ Microsoft & SAP",
+      date: "June 2024",
+      content: "Completed AI: Transformative Learning with TechSaksham. Gained knowledge in AI/ML concepts and enterprise-ready AI solutions.",
+      category: "Learning",
+      icon: Star,
+      relatedIds: [1, 3],
+      status: "completed" as const,
+      energy: 85,
     },
     {
-      company: "AWS APAC",
-      role: "Solutions Architecture Virtual Experience",
-      period: "Aug 2024",
-      description: [
-        "Practiced technical communication and architecture diagram design using AWS architectural patterns on Forage.",
-        "Designed and presented a scalable hosting architecture leveraging EC2, S3, and RDS with detailed cost estimations."
-      ]
+      id: 3,
+      title: "Solutions @ AWS APAC",
+      date: "Aug 2024",
+      content: "Designed scalable cloud hosting architectures using EC2, S3, and RDS during a virtual solutions architecture experience.",
+      category: "Experience",
+      icon: CloudIcon,
+      relatedIds: [2, 4],
+      status: "completed" as const,
+      energy: 90,
     },
     {
-      company: "Sphoorthy Engineering College",
-      role: "Bachelor of Computer Engineering (Minor in AI)",
-      period: "2023 – 2027",
-      description: [
-        "GPA: 7.6/10.0",
-        "Relevant Courses: Applied Machine Learning, Algorithms and Data Structures, Natural Language Processing, Data Analytics."
-      ]
+      id: 4,
+      title: "AI Intern @ VISWAM.AI",
+      date: "Jun 2025 – Aug 2025",
+      content: "Building production-ready AI systems. Fine-tuning models using transfer learning and deploying via containerized CI/CD pipelines.",
+      category: "Experience",
+      icon: Bot,
+      relatedIds: [3],
+      status: "completed" as const,
+      energy: 95,
     }
   ]
 };
+
+// Simple cloud icon fallback since Cloud is not in standard lucide for this set
+function CloudIcon(props: any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M17.5 19c3.037 0 5.5-2.463 5.5-5.5 0-2.97-2.354-5.397-5.28-5.497A8.995 8.995 0 0 0 8.02 3 9 9 0 0 0 2 12c0 2.22 1.206 4.16 3 5.197" />
+      <path d="M5 18h14" />
+    </svg>
+  );
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -147,22 +175,6 @@ export default function Home() {
       onClick: () => handleMenuClick("Contact"),
     }
   ];
-
-  const experienceTimelineData = portfolioData.experience.map(job => ({
-      title: job.role.includes("Bachelor") ? "Education" : `${job.role} at ${job.company}`,
-      content: (
-        <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-             <h4 className="font-bold text-foreground text-lg">{job.role} @ {job.company}</h4>
-             <span className="text-sm font-mono text-primary/80">{job.period}</span>
-          </div>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-              {job.description.map((point, i) => <li key={i}>{point}</li>)}
-          </ul>
-        </div>
-      ),
-  }));
-
 
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
@@ -253,8 +265,15 @@ export default function Home() {
           </Card>
         </section>
 
-        <section id="experience" className="bg-background w-full">
-            <Timeline data={experienceTimelineData} />
+        <section id="experience" className="bg-background w-full py-32 overflow-hidden border-t border-border/20">
+          <div className="text-center mb-12">
+            <h2 className="font-headline text-3xl sm:text-4xl font-bold flex items-center justify-center gap-2">
+              <Briefcase className="text-primary"/>
+              Professional Journey
+            </h2>
+            <p className="text-muted-foreground mt-2">A futuristic view of my career path.</p>
+          </div>
+          <RadialOrbitalTimeline timelineData={portfolioData.experience} />
         </section>
       </div>
 
@@ -262,7 +281,7 @@ export default function Home() {
         <MenuBar items={menuItems} />
       </div>
 
-      <footer className="w-full py-10">
+      <footer className="w-full py-10 border-t border-border/10">
         <div className="container mx-auto flex flex-col items-center gap-6 text-muted-foreground text-sm">
           <div className="flex justify-center gap-6">
             <a href={portfolioData.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
